@@ -1,0 +1,18 @@
+# pdf-to-llm-context — Python Dependencies
+# Install with: pip install -r requirements.txt
+
+# PDF processing
+PyMuPDF==1.24.5
+
+# Google Gemini AI
+google-generativeai==0.7.2
+
+# Anthropic Claude (optional enrichment pass)
+anthropic==0.34.0
+
+# Image processing (cover color extraction)
+Pillow==10.4.0
+
+# Configuration
+PyYAML==6.0.2
+python-dotenv==1.0.1

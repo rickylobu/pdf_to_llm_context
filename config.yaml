@@ -1,0 +1,80 @@
+# ============================================================
+# pdf-to-llm-context — Configuration File
+# Edit ONLY this file before running the extractor.
+# ============================================================
+
+# ----------------------------------------------------------
+# INPUT
+# ----------------------------------------------------------
+input:
+  # Filename of your PDF inside the /input/ folder.
+  pdf_filename: "my_book.pdf"
+
+  # Book metadata (used for copyright footer and index.json)
+  title: "Book Title"
+  author: "Author Name"
+  year: 2024
+  isbn: ""                          # optional
+  original_url: ""                  # optional — URL of the original source
+
+# ----------------------------------------------------------
+# AI PROCESSING
+# ----------------------------------------------------------
+ai:
+  # Gemini model to use for OCR. Flash is free-tier friendly.
+  # Options: "gemini-1.5-flash" | "gemini-1.5-pro"
+  ocr_model: "gemini-1.5-flash"
+
+  # Enable Claude (Anthropic) as a second pass to enrich/structure the Markdown.
+  # Requires ANTHROPIC_API_KEY in your .env file.
+  enable_claude_enrichment: false
+  claude_model: "claude-sonnet-4-20250514"   # used if enrichment is enabled
+
+  # Wolfram Alpha validation for detected mathematical expressions.
+  # Requires WOLFRAM_APP_ID in your .env file.
+  enable_wolfram_math: false
+
+# ----------------------------------------------------------
+# PROCESSING
+# ----------------------------------------------------------
+processing:
+  # Image resolution for PDF-to-image conversion (DPI).
+  # Higher = better OCR accuracy, slower processing.
+  # Recommended: 200 (fast) | 300 (balanced) | 400 (quality)
+  dpi: 300
+
+  # Pages to process. Use null to process all pages.
+  # Examples: null | [1, 50] | [10, 20]
+  page_range: null
+
+  # Seconds to wait between API calls (do not go below 4.0 for free tier).
+  rate_limit_delay: 4.5
+
+  # Maximum retries per page before marking it as failed.
+  max_retries: 3
+
+  # If true, already-processed pages are skipped (idempotency/resume).
+  skip_existing: true
+
+# ----------------------------------------------------------
+# OUTPUT
+# ----------------------------------------------------------
+output:
+  # Folder where generated Markdown files are saved.
+  pages_dir: "output/pages"
+
+  # Copy output to the React viewer's public folder after extraction.
+  # Set to true when you're ready to build the viewer.
+  sync_to_viewer: true
+  viewer_public_dir: "viewer/public/pages"
+
+# ----------------------------------------------------------
+# VIEWER THEME (auto-populated from cover — you can override)
+# ----------------------------------------------------------
+theme:
+  # Leave empty to auto-detect from book cover.
+  primary_color: ""
+  secondary_color: ""
+  accent_color: ""
+  background_color: ""
+  text_color: ""
