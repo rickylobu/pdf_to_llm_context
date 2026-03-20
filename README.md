@@ -43,7 +43,7 @@ Scanned PDF  →  Gemini OCR  →  Markdown pages  →  GitHub Pages viewer
 
 ```bash
 # Fork this repo on GitHub first, then:
-git clone https://github.com/YOUR_USERNAME/pdf-to-llm-context.git
+git clone https://github.com/rickylobu/pdf-to-llm-context.git
 cd pdf-to-llm-context
 ```
 
